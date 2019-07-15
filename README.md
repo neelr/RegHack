@@ -25,7 +25,7 @@ This is to add a person, and it accepts a json like
   "key":"your chosen API key"
  }
  ```
- #### /checkin
+ #### /toggleID
 
 This is to switch their check in value, and the value is
 ```json
@@ -35,7 +35,7 @@ This is to switch their check in value, and the value is
   "key":"your chosen API key"
  }
  ```
- #### /mail
+ #### /sendmail
 
 This is to send a mail to the group. `()b64code()` will be replaced with the base 64 url of their qr code and `()name()` will be replaced with their name.
 ```json
@@ -46,15 +46,22 @@ This is to send a mail to the group. `()b64code()` will be replaced with the bas
  }
  ```
  
- ### GUI
+ ### GUI/GET
  
  #### /form
  
  Has a basic form on what to put. You can add more/less, but then you need to configure the backend.
  
- #### /people
+ #### /people/:apikey
  
- A list of the people that are signed up, and whither or not they are checked in.
+ A list of the people that are signed up, and whether or not they are checked in.
+
+#### /stats/:apikey
+ 
+A list of the statistics about the people in your database.
+ #### /email
+ 
+A GUI to send a mail through the /sendmail post
  
  #### /reader
  

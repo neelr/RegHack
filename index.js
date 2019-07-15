@@ -26,7 +26,7 @@ var transporter = nodemailer.createTransport({
 });
 
 app.get("/",(req,res) => {
-    res.send("Hi this is RegHack!");
+    res.render("home");
 })
 app.get("/form", (req,res) => {
     res.render("form");
