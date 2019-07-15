@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title>Reader</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js" ></script>	
+    <script type="text/javascript" src="/instascan.min.js"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-  </head>
-  <body>
-      <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+</head>
+
+<body>
+    <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item">
-                <img src="logo.png" height="28">
+                <img src="/logo.png" height="28">
             </a>
 
-            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+            <a id="nav-toggle" role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
                 data-target="navbarBasicExample">
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
@@ -26,22 +28,22 @@
 
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
-                <a class="navbar-item">
+                <a href="/" class="navbar-item">
                     Home
                 </a>
-                <a class="navbar-item">
-                    Reader
+                <a class="navbar-item is-active">
+                    QR Reader
                 </a>
-                <a class="navbar-item">
+                <a href="/email" class="navbar-item">
                     Mass Mailer
                 </a>
-                <a class="navbar-item">
+                <a href="/people/1" class="navbar-item">
                     All People
                 </a>
-                <a class="navbar-item">
+                <a href="/form" class="navbar-item">
                     Form
                 </a>
-                <a class="navbar-item is-active">
+                <a href="/stats/1" class="navbar-item">
                     Statistics
                 </a>
             </div>
@@ -57,25 +59,33 @@
             </div>
         </div>
     </nav>
-    <div class="hero is-warning" style="height: 100vh">
+    <div class="hero is-dark" style="height: 100vh">
         <div class="hero-body has-text-centered">
             <h1 class="title">QR Reader</h1>
             <video style="height: 25vh;" id="preview"></video>
             <div class="field">
                 <div class="controls">
                     <form>
-                    <label for="Checked-In">Checked-In</label>
-                    <input id="type" type="radio" class="radio" value="in" name="type">
-                    <label for="Checked-Out">Checked-Out</label>
-                    <input id="type" type="radio" class="radio" value="out" name="type">
+                        <label for="Checked-In">Checked-In</label>
+                        <input id="type" type="radio" class="radio" value="in" name="type">
+                        <label for="Checked-Out">Checked-Out</label>
+                        <input id="type" type="radio" class="radio" value="out" name="type">
                     </form>
                 </div>
             </div>
-            <h2 class="title is-6" id="name"></h2>
-            <h2 class="title is-6" id="email"></h2>
-            <h2 class="title is-6" id="age"></h2>
-            <h2 class="title is-6" id="check"></h2>
-            
+            <div class="field">
+                <label class="label has-text-white">Your API Key</label>
+                <div class="control has-text-centered">
+                    <input style="width:25vw" id="key" class="input" type="text" name="key" placeholder="API Key">
+                </div>
+            </div>
+            <div class="container has-background-link" style="width: 25vw; padding:10px; border-radius: 10px;">
+                <h2 class="title is-6" id="name"></h2>
+                <h2 class="title is-6" id="email"></h2>
+                <h2 class="title is-6" id="age"></h2>
+                <h2 class="title is-6" id="check"></h2>
+            </div>
+
         </div>
     </div>
     <script>
@@ -86,28 +96,43 @@
                 video: document.getElementById('preview')
             }
         );
-        scanner.addListener('scan', function(content) {
+        scanner.addListener('scan', function (content) {
             console.log(document.querySelector('input[name = "type"]:checked').value)
-            $.post("/toggleID",{
-                where:document.querySelector('input[name = "type"]:checked').value,
-                id:content
-            }, (data,stat) => {
+            $.post("/toggleID", {
+                where: document.querySelector('input[name = "type"]:checked').value,
+                id: content,
+                key: document.getElementById('key').value
+            }, (data, stat) => {
                 document.getElementById('name').innerHTML = data.name;
                 document.getElementById('age').innerHTML = data.age;
                 document.getElementById('email').innerHTML = data.email;
-                document.getElementById('check').innerHTML = "Checked "+document.querySelector('input[name = "type"]:checked').value;
+                document.getElementById('check').innerHTML = "Checked " + document.querySelector('input[name = "type"]:checked').value;
             })
         });
-        Instascan.Camera.getCameras().then(cameras => 
-        {
+        Instascan.Camera.getCameras().then(cameras => {
             cams = cameras;
-            if(cameras.length > 0){
+            if (cameras.length > 0) {
                 scanner.start(cameras[0]);
             } else {
                 alert("No camera detected!");
             }
         });
     </script>
+    <style>
+        .hero-body {
+            background-color: #363636 !important;
+        }
+    </style>
+    <script>
+        (function () {
+            var burger = document.querySelector('#nav-toggle');
+            var menu = document.querySelector('.navbar-menu');
+            burger.addEventListener('click', function () {
+                burger.classList.toggle('is-active');
+                menu.classList.toggle('is-active');
+            });
+        })();</script>
 
- </body>
+</body>
+
 </html>

@@ -9,14 +9,14 @@
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 </head>
 
-<body>
+<body style="background-color: #363636;">
     <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item">
-                <img src="logo.png" height="28">
+                <img src="/logo.png" height="28">
             </a>
 
-            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+            <a id="nav-toggle" role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
                 data-target="navbarBasicExample">
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
@@ -26,22 +26,21 @@
 
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
-                <a class="navbar-item">
+                <a href="/" class="navbar-item">
                     Home
                 </a>
-                <a class="navbar-item">
-                    Reader
-                </a>
-                <a class="navbar-item">
+                <a href="/reader" class="navbar-item">
+                    QR Reader
+                <a href="/email" class="navbar-item">
                     Mass Mailer
                 </a>
-                <a class="navbar-item">
+                <a href="/people/1" class="navbar-item">
                     All People
                 </a>
-                <a class="navbar-item">
+                <a class="navbar-item is-active">
                     Form
                 </a>
-                <a class="navbar-item is-active">
+                <a href="/stats/1" class="navbar-item">
                     Statistics
                 </a>
             </div>
@@ -89,12 +88,19 @@
             </div>
         </div>
     </div>
+    <script>
+            (function() {
+            var burger = document.querySelector('#nav-toggle');
+            var menu = document.querySelector('.navbar-menu');
+            burger.addEventListener('click', function() {
+                burger.classList.toggle('is-active');
+                menu.classList.toggle('is-active');
+            });
+        })();</script>
 </body>
 <style>
-    body,html {
-        margin: 0px;
-        padding: 0px;
-        height:100vh;
-    }
-</style>
+        .hero-body {
+            background-color: #363636 !important;
+        }
+        </style>
 </html>

@@ -36,7 +36,6 @@ app.get("/email",(req,res)=>{
 });
 app.post("/addperson", (req,res,next) => {
     //Add your API Key here or make it more secure?
-    if ("::1" != req.ip && req.key != process.env.API_KEY) {return next(new Error("Not Authorized"))}
     console.log(req.path);
     console.log(req.body.name);
     var id = mongoose.Types.ObjectId();
@@ -52,7 +51,11 @@ app.post("/addperson", (req,res,next) => {
         .catch((err) => console.log(err));
     res.redirect('/form');
 })
-app.get("/people",(req,res) => {
+app.get("/people/:key",(req,res,next) => {
+    console.log(req.ip);
+    console.log(process.env.API_KEY)
+    console.log(req.params.key)
+    if ("::1" != req.ip && req.params.key != process.env.API_KEY) {return next(new Error("Not Authorized"))}
     People.find({},(err,result) => {
         res.render("people",{"data":result});
     })
@@ -60,13 +63,14 @@ app.get("/people",(req,res) => {
 app.get("/reader",(req,res) => {
     res.render("reader");
 });
-app.get("/stats",(req,res)=> {
+app.get("/stats/:key",(req,res,next)=> {
+    if ("::1" != req.ip && req.params.key != process.env.API_KEY) {return next(new Error("Not Authorized"))}
     People.find({},(err,result)=>{
         res.render("stat",{"people":result})
     });
 })
-app.post("/toggleID",(req,res)=> {
-    if ("::1" != req.ip && req.key != process.env.API_KEY) {return next(new Error("Not Authorized"))}
+app.post("/toggleID",(req,res,next)=> {
+    if ("::1" != req.ip && req.body.key != process.env.API_KEY) {return next(new Error("Not Authorized"))}
     var id = req.body.id;
     var checked;
     req.body.where == "in" ? checked = true : checked = false;
@@ -74,8 +78,9 @@ app.post("/toggleID",(req,res)=> {
         res.json(result);
     })
 });
-app.post("/sendmail",(req,res) => {
-    if ("::1" != req.ip && req.key != process.env.API_KEY) {return next(new Error("Not Authorized"))}
+app.post("/sendmail",(req,res,next) => {
+
+    if ("::1" != req.ip && req.body.key != process.env.API_KEY) {return next(new Error("Not Authorized"))}
     console.log(req.body);
     People.find({}, (err,result)=> {
         var done = false;
