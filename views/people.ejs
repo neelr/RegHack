@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>People</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+</head>
+
+<body>
+    <div class="hero" style="height: 100vh">
+        <div class="hero-body has-text-centered">
+            <h1 class="title">Table of people</h1>
+            <div class="columns is-centered">
+                <div class="column is-narrow">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <td>Name</td>
+                                <td>Age</td>
+                                <td>Email</td>
+                                <td>Checked</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% var i;
+                    for (i=0; i < data.length; i++) { %>
+                            <tr>
+                                <td><%= data[i].name %></td>
+                                <td><%= data[i].age %></td>
+                                <td><%= data[i].email %></td>
+                                <td><%= data[i].checked ? "In" : "Out" %></td>
+                            </tr>
+                            <%}%>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+            </div>
+        </div>
+    </div>
+</body>
+<style>
+    body,html {
+        margin: 0px;
+        padding: 0px;
+        height:100vh;
+    }
+</style>
+</html>

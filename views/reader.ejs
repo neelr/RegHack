@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Reader</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js" ></script>	
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  </head>
+  <body>
+    <div class="hero is-warning" style="height: 100vh">
+        <div class="hero-body has-text-centered">
+            <h1 class="title">QR Reader</h1>
+            <video style="height: 25vh;" id="preview"></video>
+            <div class="field">
+                <div class="controls">
+                    <form>
+                    <label for="Checked-In">Checked-In</label>
+                    <input id="type" type="radio" class="radio" value="in" name="type">
+                    <label for="Checked-Out">Checked-Out</label>
+                    <input id="type" type="radio" class="radio" value="out" name="type">
+                    </form>
+                </div>
+            </div>
+            <h2 class="title is-6" id="name"></h2>
+            <h2 class="title is-6" id="email"></h2>
+            <h2 class="title is-6" id="age"></h2>
+            <h2 class="title is-6" id="check"></h2>
+            
+        </div>
+    </div>
+    <script>
+        var cams;
+
+        let scanner = new Instascan.Scanner(
+            {
+                video: document.getElementById('preview')
+            }
+        );
+        scanner.addListener('scan', function(content) {
+            console.log(document.querySelector('input[name = "type"]:checked').value)
+            $.post("/toggleID",{
+                where:document.querySelector('input[name = "type"]:checked').value,
+                id:content
+            }, (data,stat) => {
+                document.getElementById('name').innerHTML = data.name;
+                document.getElementById('age').innerHTML = data.age;
+                document.getElementById('email').innerHTML = data.email;
+                document.getElementById('check').innerHTML = "Checked "+document.querySelector('input[name = "type"]:checked').value;
+            })
+        });
+        Instascan.Camera.getCameras().then(cameras => 
+        {
+            cams = cameras;
+            if(cameras.length > 0){
+                scanner.start(cameras[0]);
+            } else {
+                alert("No camera detected!");
+            }
+        });
+    </script>
+
+ </body>
+</html>
