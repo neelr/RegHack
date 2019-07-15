@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Form Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+</head>
+
+<body>
+    <div class="hero is-dark" style="height: 100vh">
+        <div class="hero-body has-text-centered">
+            <h1 class="title">Send a Mass Email!</h1>
+            <h1> Remember that <code>()b64code()</code> will turn into a base 64 image qr code url and <code>()name()</code> will be replaced with their name!</h1>
+            <div class="container" style="width: 50vw">
+                <form method="POST" action="/sendmail">
+                    <div class="field">
+                        <label class="label has-text-white">Your Subject</label>
+                        <div class="control">
+                            <input class="input" type="text" name="subject" placeholder="Enter your subject" required>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label has-text-white">Your HTML body</label>
+                        <div class="control">
+                            <textarea class="textarea" name="html" placeholder="HTML body"></textarea>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control  has-text-centered">
+                            <input class="button is-success" type="submit" value="Submit">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<style>
+    body,
+    html {
+        margin: 0px;
+        padding: 0px;
+        height: 100vh;
+    }
+</style>
+
+</html>

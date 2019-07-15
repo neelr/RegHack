@@ -31,6 +31,9 @@ app.get("/",(req,res) => {
 app.get("/form", (req,res) => {
     res.render("form");
 })
+app.get("/email",(req,res)=>{
+    res.render("email");
+});
 app.post("/addperson", (req,res,next) => {
     //Add your API Key here or make it more secure?
     if ("::1" != req.ip && req.key != process.env.API_KEY) {return next(new Error("Not Authorized"))}
@@ -57,6 +60,11 @@ app.get("/people",(req,res) => {
 app.get("/reader",(req,res) => {
     res.render("reader");
 });
+app.get("/stats",(req,res)=> {
+    People.find({},(err,result)=>{
+        res.render("stat",{"people":result})
+    });
+})
 app.post("/toggleID",(req,res)=> {
     if ("::1" != req.ip && req.key != process.env.API_KEY) {return next(new Error("Not Authorized"))}
     var id = req.body.id;
@@ -66,7 +74,7 @@ app.post("/toggleID",(req,res)=> {
         res.json(result);
     })
 });
-app.post("/mail",(req,res) => {
+app.post("/sendmail",(req,res) => {
     if ("::1" != req.ip && req.key != process.env.API_KEY) {return next(new Error("Not Authorized"))}
     console.log(req.body);
     People.find({}, (err,result)=> {
