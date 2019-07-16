@@ -5,6 +5,7 @@
     <title>People</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <link rel="icon" href="/logo.png">
@@ -84,6 +85,17 @@
                             <%}%>
                     </tbody>
                 </table>
+                <div class="field">
+                    <label class="label has-text-white">Your API Key</label>
+                    <div class="control has-text-centered">
+                        <input style="width:25vw" id="key" class="input" type="text" name="key" placeholder="API Key">
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="control has-text-centered">
+                        <button id="clear" class="button is-danger">Clear</button>
+                    </div>
+                </div>
             </div>
         </div>
             </div>
@@ -102,6 +114,12 @@
             }
             </style>
     <script>
+        function clear() {
+            console.log(document.getElementById("key").value);
+            $.post("/clear",{"key":document.getElementById("key").value},(data)=> {
+            location.reload();
+        })}
+        document.getElementById("clear").onclick = clear;
             (function() {
             var burger = document.querySelector('#nav-toggle');
             var menu = document.querySelector('.navbar-menu');

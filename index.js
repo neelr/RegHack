@@ -101,6 +101,13 @@ app.post("/sendmail",(req,res,next) => {
         res.json({"complete":true})
     });
 });
+app.post("/clear",(req,res)=>{
+    if ("::1" != req.ip && req.body.key != process.env.API_KEY) {return next(new Error("Not Authorized"))}
+    People.remove({},(err)=> {
+        console.log("removed")
+        res.json({"removed":true})
+    });
+});
 app.listen(3000, (err) => {
     console.log("RegHack is on and ready to go on port 3000!");
 })
