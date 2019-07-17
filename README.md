@@ -1,4 +1,4 @@
-# RegHack
+# RegHack (outdated creating new one...)
 A registration web app for hackathons or other events
 
 ## What is it?
