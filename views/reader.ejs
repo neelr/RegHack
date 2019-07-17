@@ -103,7 +103,7 @@
         );
         scanner.addListener('scan', function (content) {
             console.log(document.querySelector('input[name = "type"]:checked').value)
-            $.post("/toggleID", {
+            $.post("/checkin", {
                 where: document.querySelector('input[name = "type"]:checked').value,
                 id: content,
                 key: document.getElementById('key').value

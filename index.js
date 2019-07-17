@@ -57,7 +57,7 @@ app.get("/people/:key", (req, res, next) => {
 app.get("/reader", (req, res) => {
     res.render("reader");
 });
-app.post("/toggleID", (req, res, next) => {
+app.post("/checkin", (req, res, next) => {
     if (!config.checked) {return next(new Error("Check In not enabled in config.js"))}
     if ("::1" != req.ip && req.body.key != process.env.API_KEY) { return next(new Error("Not Authorized")) }
     var id = req.body.id;

@@ -1,18 +1,21 @@
 <!DOCTYPE html>
-<html lang="en" >
-  <head>
+<html lang="en">
+
+<head>
     <meta charset="UTF-8">
-    <title>Cheatsheet Concept</title>
+    <title>RegHack</title>
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel='stylesheet' href='/style.css'>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link href="https://myCDN.com/prism@v1.x/themes/prism.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@15/dist/smooth-scroll.polyfills.min.js"></script>
-  </head>
-  <body>
-   <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+</head>
+
+<body>
+    <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item">
                 <img src="/logo.png" height="28">
@@ -60,7 +63,7 @@
         <div class="hero-body has-text-centered">
             <div class="container">
                 <img style="height: 96px;" src="/logo.png">
-                <h1 class="title"><strong>RegHack (Under Dev)</strong></h1>
+                <h1 class="title is-1"><strong>RegHack</strong></h1>
                 <h2 class="subtitle">Automated registration for your events!</h2>
                 <p>Have you ever been confused on how to check in? Are you using a combination of google forms and a
                     spreadsheet and
@@ -70,46 +73,52 @@
         </div>
     </section>
     <section class="section">
-      <div class="container">
-        <div class="columns">
-          <div class="column is-3">
-            <aside class="is-medium menu">
-          <p class="menu-label">
-            categories
-          </p>
-          <ul class="menu-list">
-            <li><a data-scroll href="#getting-started" class="is-active">Getting Started</a></li>
-            <li><a class="is-active">POST Requests</a></li>
-            <li><a class="is-active">GET Requests/ GUI</a></li>
-          </ul>
-            </aside>
-          </div>
-          <div class="column is-9">
-            <div class="content is-medium">
-          <h3 id="getting-started" class="title is-3">Getting Started</h3>
-              <div class="box">
-                <h4 id="const" class="title is-3">Installing Nodejs</h4>
-                <h4 class="title is-5">Mac</h4>
-                <pre><code class="language-shell">brew update 
+        <div class="container">
+            <div class="columns">
+                <div class="column is-3">
+                    <aside class="is-medium menu">
+                        <p class="menu-label">
+                            categories
+                        </p>
+                        <ul class="menu-list">
+                            <li><a data-scroll href="#getting-started" class="is-active">Getting Started</a></li>
+                            <li><a data-scroll href="#get" class="is-active">GET Requests/ GUI</a></li>
+                            <li><a data-scroll href="#post" class="is-active">POST Requests</a></li>
+                        </ul>
+                    </aside>
+                </div>
+                <div class="column is-9">
+                    <div class="content is-medium">
+                        <h3 id="getting-started" class="title is-3">Getting Started</h3>
+                        <div class="box">
+                            <h4 id="const" class="title is-3">Installing Nodejs</h4>
+                            <h4 class="title is-5">Mac</h4>
+                            <pre><code class="language-shell">brew update 
 brew install node</code></pre>
-<h4 class="title is-5">Windows</h4>
-<pre><code class="language-powershell">cinst nodejs.install</code></pre>
-<h4 class="title is-5">Linux</h4>
-                <pre><code class="language-shell">sudo apt-get install nodejs 
+                            <h4 class="title is-5">Windows</h4>
+                            <pre><code class="language-powershell">cinst nodejs.install</code></pre>
+                            <h4 class="title is-5">Linux</h4>
+                            <pre><code class="language-shell">sudo apt-get install nodejs 
 sudo apt-get install npm</code></pre>
-</div>
-        <div class="box">
-                <h4 id="const" class="title is-3">Downloading and Configuration</h4>
-                <h4 class="title is-5">Clone using Github</h4>
-                <pre><code class="language-bash">git clone https://github.com/Hacker719/RegHack</code></pre>
-                <h4 class="title is-5">Coniguring the config.js</h4>
-                <p>This is important because the entire program will make and store data based on this. So to do this you need to go to the config.js file. Then you will face the defualt options. You need to include all parts of data you want to record (ex. School, Age, Height etc.) You need to input those, and an example input (to determine between string and integer). There are some special configurations:</p>
-                <ol>
-                    <li>First is <code>checked</code>. This will allow you to, see if they are checked in or out and use the QR reader function. To activate set it to false.</li>
-                    <li>Second is <code>email</code>. This will allow you to, mass email the people an html email. To activate set it to a string</li>
-                </ol>
-                <p>An example config.js is:</p>
-                <pre><code class="language-javascript">module.exports = {
+                        </div>
+                        <div class="box">
+                            <h4 id="const" class="title is-3">Downloading and Configuration</h4>
+                            <h4 class="title is-5">Clone using Github</h4>
+                            <pre><code class="language-bash">git clone https://github.com/Hacker719/RegHack</code></pre>
+                            <h4 class="title is-5">Coniguring the config.js</h4>
+                            <p>This is important because the entire program will make and store data based on this. So
+                                to do this you need to go to the config.js file. Then you will face the defualt options.
+                                You need to include all parts of data you want to record (ex. School, Age, Height etc.)
+                                You need to input those, and an example input (to determine between string and integer).
+                                There are some special configurations:</p>
+                            <ol>
+                                <li>First is <code>checked</code>. This will allow you to, see if they are checked in or
+                                    out and use the QR reader function. To activate set it to false.</li>
+                                <li>Second is <code>email</code>. This will allow you to, mass email the people an html
+                                    email. To activate set it to a string</li>
+                            </ol>
+                            <p>An example config.js is:</p>
+                            <pre><code class="language-javascript">module.exports = {
     "Name":"John Doe",
     "School":"Berkely College",
     "Grade":12,
@@ -117,247 +126,350 @@ sudo apt-get install npm</code></pre>
     "email":"joe@gmail.com",
     "checked":false
 }</code></pre>
-        </div> 
-        <div class="box">
-            <h1 class="title is-3">Starting</h1>
-            <p>To start up the app locally, go to the folder, and type:</p>
-            <pre><code>npm install
+                            <h4 class="title is-5">Coniguring the .env file</h4>
+                            <p>To configure the .env file you can check a model one at model.env. The basic parts
+                                include:</p>
+                            <ul>
+                                <li>MONGO_URL=Your actual mongoDB url with a collection</li>
+                                <li>EMAIL_USER=Your gmail email.(you need to configure with other smtp servers inside
+                                    index.js</li>
+                                <li>EMAIL_PASS=Your email password</li>
+                                <li>API_KEY=This is any string of numbers and letters that are a basic password for your
+                                    registration system.</li>
+                            </ul>
+                            <p>An example is:</p>
+                            <pre><code class="language-bash">MONGO_URL=mongodb+srv://username:password@reghacktest-oeoxh.gcp.mongodb.net/registrationsystem
+EMAIL_USER=reghack@gmail.com
+EMAIL_PASS=password01
+API_KEY=rEgHaks2201</code></pre>
+                        </div>
+                        <div class="box">
+                            <h1 class="title is-3">Starting</h1>
+                            <p>To start up the app locally, go to the folder, and type:</p>
+                            <pre><code>npm install
 node index.js</code></pre>
-            <p>Then the app should be running on <a href="localhost:3000">localhost:3000</a></p>
+                            <p>Then the app should be running on <a href="localhost:3000">localhost:3000</a></p>
+                        </div>
+                        <h4 id="get" class="title is-3">GET Requests (GUI)</h4>
+                        <div class="box">
+                            <h1 class="title is-3">/form</h1>
+                            <p>This will give a GUI where you can use the POST <code>/addperson</code> function in a
+                                form.</p>
+                            <hr>
+                            <h1 class="title is-3">/email</h1>
+                            <p>This will give a GUI where you can use the POST <code>/sendmail</code> function in a
+                                website.</p>
+                            <hr>
+                            <h1 class="title is-3">/people/:apikey</h1>
+                            <p>This will give a GUI where you can view all the people and what they are in a table. This
+                                also allows the user to use the <code>/clear</code> POST in a GUI.</p>
+                            <hr>
+                            <h1 class="title is-3">/reader</h1>
+                            <p>This will give a GUI where you can use the POST <code>/checkin</code> function in a
+                                website. It scans the QR code to check people in. This QR code can be generated from _id
+                                or from the mass email (<code>()b64code()</code>).</p>
+                        </div>
+                        <h4 id="post" class="title is-3">POST Requests</h4>
+                        <div class="box">
+                            <p class="title is-3">/addperson</p>
+                            <p>This is to add a person to the database. You need to include your API key and the parts
+                                in your config. You do not include checked. An example for a config above is</p>
+                            <pre><code class="language-javascript">{
+    "Name":"John Doe",
+    "age":42,
+    "School":"Stanford",
+    "Grade": 13,
+    "email":"crackerjack@yopmail.com",
+    "key":"your chosen API key"
+}</code></pre>
+                            <hr>
+                            <p class="title is-3">/checkin</p>
+                            <p>This is to change a person's checked value. This lets you know if they are checked "in"
+                                or "out". An example one would be:</p>
+                            <pre><code class="language-javascript">{
+    "id":"John's _id in MongoDB",
+    "where":"in",
+    "key":"your chosen API key"
+}</code></pre>
+                            <hr>
+                            <p class="title is-3">/sendmail</p>
+                            <p>This is to send a mail to the group. <code>()b64code()</code> will be replaced with a
+                                base 64 url of a QR code that you can scan with the /reader GUI. You can also use
+                                <code>()anyconfigvalue()</code> for that to be displayed. AN example includes:</p>
+                            <pre><code class="language-javascript">{
+        "subject":"Hello I am a  subject",
+        "html":"&ltp&gt Hello ()Name() I know your email-()email and school-()School() &lt/p&gt &ltimg src='()b64code()'&gt",
+        "key":"your chosen API key"
+}</code></pre>
+                            <hr>
+                            <p class="title is-3">/clear</p>
+                            <p>This checked for the key, then clears the entire MongoDB collection, deleteing all data.
+                                <strong class="has-text-danger">THIS IS PERMANENT AND DANGEROUS</strong>. And example
+                                is:</p>
+                            <pre><code class="language-javascript">{
+        "key":"your chosen API key"
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
-</section>
-    <div class="footer">
-        <div class="container has-text-centered">
-            <p class="title is-6">View the repository <a
-                    href="https://github.com/Hacker719/RegHack">@Hacker719/RegHack</a></p>
-            <p class="title is-6">Open Source! GNU GPL V3 License</p>
-        </div>
-    </div>
+    </section>
+    <section id="contr" class="hero is-dark">
+            <div class="hero-body has-text-centered">
+              <p class="title">Contributers</p>
+              <div class="columns is-center">
+                <div class="column"></div>
+                <div class="column">
+                  <div class="column-body">
+                    <div class="box has-background-info">
+                    <div style="position: relative; z-index: top !important;" class="title is-4"><a
+                        href="https://github.com/hacker719">Hacker719</a></div>
+                    <a style="position: relative; z-index: top !important;" href="https://github.com/hacker719"><img
+                        style="height: 100px !important;" src="https://avatars3.githubusercontent.com/u/35831013?s=460&v=4"></a>
+                      </div>
+                  </div>
+                </div>
+                <div class="column"></div>
+              </div>
+            </div>
+          </section>
+          <div class="footer">
+            <div class="container has-text-centered">
+              <p class="title is-6">View the repository <a href="https://github.com/Hacker719/RegHack">@Hacker719/RegHack</a>
+              </p>
+              <p class="title is-6">Open Source! GNU Affero GPL V3 License</p>
+            </div>
+          </div>
     <style>
-    code[class*='language-'],
-pre[class*='language-'] {
-  color: rgb(215, 236, 255);
-  background: none;
-  font-family: 'Operator Mono', 'Roboto Mono', Menlo, Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono',
-    monospace;
-  text-align: left;
-  white-space: pre;
-  word-spacing: normal;
-  word-break: normal;
-  word-wrap: normal;
-  line-height: 2;
-  font-size: 1rem;
-  -webkit-overflow-scrolling: touch;
-  margin: 0;
+        code[class*='language-'],
+        pre[class*='language-'] {
+            color: rgb(215, 236, 255);
+            background: none;
+            font-family: 'Operator Mono', 'Roboto Mono', Menlo, Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono',
+                monospace;
+            text-align: left;
+            white-space: pre;
+            word-spacing: normal;
+            word-break: normal;
+            word-wrap: normal;
+            line-height: 2;
+            font-size: 1rem;
+            -webkit-overflow-scrolling: touch;
+            margin: 0;
 
-  -moz-tab-size: 4;
-  -o-tab-size: 4;
-  tab-size: 4;
+            -moz-tab-size: 4;
+            -o-tab-size: 4;
+            tab-size: 4;
 
-  -webkit-hyphens: none;
-  -moz-hyphens: none;
-  -ms-hyphens: none;
-  hyphens: none;
-}
+            -webkit-hyphens: none;
+            -moz-hyphens: none;
+            -ms-hyphens: none;
+            hyphens: none;
+        }
 
-pre[class*='language-']::-moz-selection,
-pre[class*='language-'] ::-moz-selection,
-code[class*='language-']::-moz-selection,
-code[class*='language-'] ::-moz-selection {
-  text-shadow: none;
-  background: #131824;
-}
+        pre[class*='language-']::-moz-selection,
+        pre[class*='language-'] ::-moz-selection,
+        code[class*='language-']::-moz-selection,
+        code[class*='language-'] ::-moz-selection {
+            text-shadow: none;
+            background: #131824;
+        }
 
-pre[class*='language-']::selection,
-pre[class*='language-'] ::selection,
-code[class*='language-']::selection,
-code[class*='language-'] ::selection {
-  text-shadow: none;
-  background: #131824;
-}
+        pre[class*='language-']::selection,
+        pre[class*='language-'] ::selection,
+        code[class*='language-']::selection,
+        code[class*='language-'] ::selection {
+            text-shadow: none;
+            background: #131824;
+        }
 
-@media print {
-  code[class*='language-'],
-  pre[class*='language-'] {
-    text-shadow: none;
-  }
-}
+        @media print {
 
-/* Code blocks */
-pre[class*='language-'] {
-  overflow: auto;
-  padding: 0.75rem 1.25rem;
-}
+            code[class*='language-'],
+            pre[class*='language-'] {
+                text-shadow: none;
+            }
+        }
 
-pre.is-option {
-  margin: 0;
-  padding: 0;
-}
+        /* Code blocks */
+        pre[class*='language-'] {
+            overflow: auto;
+            padding: 0.75rem 1.25rem;
+        }
 
-:not(pre) > code[class*='language-'],
-pre[class*='language-'] {
-  background: linear-gradient(-30deg, #273149, #1c273f);
-  border-radius: 0.25rem;
-}
+        pre.is-option {
+            margin: 0;
+            padding: 0;
+        }
 
-/* Inline code */
-:not(pre) > code[class*='language-'] {
-  padding: 0.1em;
-  border-radius: 0.3em;
-  white-space: normal;
-}
+        :not(pre)>code[class*='language-'],
+        pre[class*='language-'] {
+            background: linear-gradient(-30deg, #273149, #1c273f);
+            border-radius: 0.25rem;
+        }
 
-.token.comment,
-.token.prolog,
-.token.doctype,
-.token.cdata {
-  color: #8ca2d3;
-}
+        /* Inline code */
+        :not(pre)>code[class*='language-'] {
+            padding: 0.1em;
+            border-radius: 0.3em;
+            white-space: normal;
+        }
 
-.token.selector,
-.token.attr-name {
-  color: #c7f683;
-}
+        .token.comment,
+        .token.prolog,
+        .token.doctype,
+        .token.cdata {
+            color: #8ca2d3;
+        }
 
-.token.punctuation {
-  color: #5ac8e3;
-}
+        .token.selector,
+        .token.attr-name {
+            color: #c7f683;
+        }
 
-.namespace {
-  opacity: 0.7;
-}
+        .token.punctuation {
+            color: #5ac8e3;
+        }
 
-.token.tag {
-  color: #2cefd8;
-}
+        .namespace {
+            opacity: 0.7;
+        }
 
-.token.property,
-.token.boolean,
-.token.number,
-.token.constant,
-.token.symbol,
-.token.deleted {
-  color: #85b4ff;
-}
+        .token.tag {
+            color: #2cefd8;
+        }
 
-.token.string,
-.language-css .token.string,
-.token.url,
-.token.attr-value,
-.token.char,
-.token.builtin,
-.token.inserted {
-  color: #ffd694;
-}
+        .token.property,
+        .token.boolean,
+        .token.number,
+        .token.constant,
+        .token.symbol,
+        .token.deleted {
+            color: #85b4ff;
+        }
 
-.token.operator,
-.token.entity,
-.style .token.string {
-  color: #ff9bbe;
-}
+        .token.string,
+        .language-css .token.string,
+        .token.url,
+        .token.attr-value,
+        .token.char,
+        .token.builtin,
+        .token.inserted {
+            color: #ffd694;
+        }
 
-.token.important,
-.token.atrule,
-.token.keyword {
-  color: #b7adff;
-}
+        .token.operator,
+        .token.entity,
+        .style .token.string {
+            color: #ff9bbe;
+        }
 
-.token.function {
-  color: #25d0e5;
-}
+        .token.important,
+        .token.atrule,
+        .token.keyword {
+            color: #b7adff;
+        }
 
-.token.regex,
-.token.variable {
-  color: #00a8d4;
-}
+        .token.function {
+            color: #25d0e5;
+        }
 
-.token.bold {
-  font-weight: bold;
-}
-.token.italic {
-  font-style: italic;
-}
+        .token.regex,
+        .token.variable {
+            color: #00a8d4;
+        }
 
-.token.entity {
-  cursor: help;
-}
-#particles-js canvas {
-    display: block;
-    position: fixed;
-    vertical-align: bottom;
-    -webkit-transform: scale(1);
-    -ms-transform: scale(1);
-    transform: scale(1);
-    opacity: 1;
-    -webkit-transition: opacity .8s ease, -webkit-transform 1.4s ease;
-    transition: opacity .8s ease, transform 1.4s ease
-}
+        .token.bold {
+            font-weight: bold;
+        }
 
-#particles-js {
-    width: 100%;
-    height: 100%;
-    z-index: -10;
-    top: 0;
-    left: 0
-}pre,
-.message {
-  max-width: 960px;
-}
+        .token.italic {
+            font-style: italic;
+        }
 
-li {margin: 10px}
+        .token.entity {
+            cursor: help;
+        }
 
-.box {
-  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
-}
+        #particles-js canvas {
+            display: block;
+            position: fixed;
+            vertical-align: bottom;
+            -webkit-transform: scale(1);
+            -ms-transform: scale(1);
+            transform: scale(1);
+            opacity: 1;
+            -webkit-transition: opacity .8s ease, -webkit-transform 1.4s ease;
+            transition: opacity .8s ease, transform 1.4s ease
+        }
 
-.box span.icon {
-  float: right;
-  font-size: 1.7em;
-  padding: 2rem 2rem 0 0;
-}
+        #particles-js {
+            width: 100%;
+            height: 100%;
+            z-index: -10;
+            top: 0;
+            left: 0
+        }
 
-.is-large.fab {
-  font-size: 7em;
-}
+        pre,
+        .message {
+            max-width: 960px;
+        }
 
-.is-large.fas {
-  font-size: 5em;
-  margin-left: 0.2em;
-}
+        li {
+            margin: 10px
+        }
 
-.media-content {overflow: hidden;}
+        .box {
+            box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+        }
 
-.token.number {
-  display: inline;
-  padding: inherit;
-  font-size: inherit;
-  line-height: inherit;
-  text-align: inherit;
-  vertical-align: inherit;
-  border-radius: inherit;
-  font-weight: inherit;
-  white-space: inherit;
-  background: inherit;
-  margin: inherit;
-}
+        .box span.icon {
+            float: right;
+            font-size: 1.7em;
+            padding: 2rem 2rem 0 0;
+        }
 
-</style>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/prism.js'></script>
-<script>
-  window.addEventListener('resize', () => {
-  const divs = document.querySelectorAll(".menu-list");
-  if (window.innerWidth < 768){
-    divs.forEach(div => div.classList.add("tags"));
-  }
-  else {
-    divs.forEach(div => div.classList.remove("tags"));
-  }
-});
-(function () {
+        .is-large.fab {
+            font-size: 7em;
+        }
+
+        .is-large.fas {
+            font-size: 5em;
+            margin-left: 0.2em;
+        }
+
+        .media-content {
+            overflow: hidden;
+        }
+
+        .token.number {
+            display: inline;
+            padding: inherit;
+            font-size: inherit;
+            line-height: inherit;
+            text-align: inherit;
+            vertical-align: inherit;
+            border-radius: inherit;
+            font-weight: inherit;
+            white-space: inherit;
+            background: inherit;
+            margin: inherit;
+        }
+    </style>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/prism.js'></script>
+    <script>
+        window.addEventListener('resize', () => {
+            const divs = document.querySelectorAll(".menu-list");
+            if (window.innerWidth < 768) {
+                divs.forEach(div => div.classList.add("tags"));
+            }
+            else {
+                divs.forEach(div => div.classList.remove("tags"));
+            }
+        });
+        (function () {
             var burger = document.querySelector('#nav-toggle');
             var menu = document.querySelector('.navbar-menu');
             burger.addEventListener('click', function () {
@@ -365,120 +477,121 @@ li {margin: 10px}
                 menu.classList.toggle('is-active');
             });
         })();
-        particlesJS("particles-js",{
-  "particles": {
-    "number": {
-      "value": 66,
-      "density": {
-        "enable": true,
-        "value_area": 394.58004845442963
-      }
-    },
-    "color": {
-      "value": "#ffffff"
-    },
-    "shape": {
-      "type": "circle",
-      "stroke": {
-        "width": 0,
-        "color": "#000000"
-      },
-      "polygon": {
-        "nb_sides": 5
-      },
-      "image": {
-        "src": "img/github.svg",
-        "width": 100,
-        "height": 100
-      }
-    },
-    "opacity": {
-      "value": 0.5,
-      "random": false,
-      "anim": {
-        "enable": false,
-        "speed": 1,
-        "opacity_min": 0.1,
-        "sync": false
-      }
-    },
-    "size": {
-      "value": 3,
-      "random": true,
-      "anim": {
-        "enable": false,
-        "speed": 40,
-        "size_min": 0.1,
-        "sync": false
-      }
-    },
-    "line_linked": {
-      "enable": true,
-      "distance": 150,
-      "color": "#ffffff",
-      "opacity": 0.4,
-      "width": 1
-    },
-    "move": {
-      "enable": true,
-      "speed": 7.891600969088593,
-      "direction": "none",
-      "random": true,
-      "straight": false,
-      "out_mode": "out",
-      "bounce": false,
-      "attract": {
-        "enable": false,
-        "rotateX": 600,
-        "rotateY": 1200
-      }
-    }
-  },
-  "interactivity": {
-    "detect_on": "canvas",
-    "events": {
-      "onhover": {
-        "enable": true,
-        "mode": "repulse"
-      },
-      "onclick": {
-        "enable": true,
-        "mode": "push"
-      },
-      "resize": true
-    },
-    "modes": {
-      "grab": {
-        "distance": 400,
-        "line_linked": {
-          "opacity": 1
-        }
-      },
-      "bubble": {
-        "distance": 400,
-        "size": 40,
-        "duration": 2,
-        "opacity": 8,
-        "speed": 3
-      },
-      "repulse": {
-        "distance": 200,
-        "duration": 0.4
-      },
-      "push": {
-        "particles_nb": 4
-      },
-      "remove": {
-        "particles_nb": 2
-      }
-    }
-  },
-  "retina_detect": true
-});
-var scroll = new SmoothScroll('a[href*="#"]',{
-	speed: 500,
-	speedAsDuration: true
-});
-</script>  
+        particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                    "value": 66,
+                    "density": {
+                        "enable": true,
+                        "value_area": 394.58004845442963
+                    }
+                },
+                "color": {
+                    "value": "#ffffff"
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    },
+                    "polygon": {
+                        "nb_sides": 5
+                    },
+                    "image": {
+                        "src": "img/github.svg",
+                        "width": 100,
+                        "height": 100
+                    }
+                },
+                "opacity": {
+                    "value": 0.5,
+                    "random": false,
+                    "anim": {
+                        "enable": false,
+                        "speed": 1,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 3,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 40,
+                        "size_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#ffffff",
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 7.891600969088593,
+                    "direction": "none",
+                    "random": true,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": {
+                        "enable": false,
+                        "rotateX": 600,
+                        "rotateY": 1200
+                    }
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "repulse"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 400,
+                        "line_linked": {
+                            "opacity": 1
+                        }
+                    },
+                    "bubble": {
+                        "distance": 400,
+                        "size": 40,
+                        "duration": 2,
+                        "opacity": 8,
+                        "speed": 3
+                    },
+                    "repulse": {
+                        "distance": 200,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    },
+                    "remove": {
+                        "particles_nb": 2
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+        var scroll = new SmoothScroll('a[href*="#"]', {
+            speed: 500,
+            speedAsDuration: true
+        });
+    </script>
 </body>
+
 </html>
