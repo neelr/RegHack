@@ -8,6 +8,7 @@ const ejs = require("ejs");
 var fs = require('fs');
 require('dotenv').config();
 var mongoose = require("mongoose");
+mongoose.set('useNewUrlParser', true);
 mongoose.connect(process.env.MONGO_URL, (err) => err ? console.log(err) : console.log("MongoDB connected Succesfully!"));
 var People = require("../RegHack/models/People");
 const bodyParser = require('body-parser');
@@ -29,7 +30,6 @@ app.get("/", (req, res) => {
     res.render("home");
 })
 app.get("/form", (req, res) => {
-    console.log(config)
     res.render("form",{"data":config});
 })
 app.get("/email", (req, res) => {
@@ -39,7 +39,6 @@ app.post("/addperson", (req, res, next) => {
     //Add your API Key here or make it more secure?
     var id = mongoose.Types.ObjectId();
     var newperson = req.body;
-    // ADD CONFIG HERE
     if (config.checked) {
         newperson.checked = false;
     }
@@ -64,17 +63,14 @@ app.post("/toggleID", (req, res, next) => {
     var id = req.body.id;
     var checked;
     req.body.where == "in" ? checked = true : checked = false;
-    //UPDATE
     People.findByIdAndUpdate(id, { $set: { "checked": checked } }, (err, result) => {
         res.json(result);
     })
 });
 app.post("/sendmail", (req, res, next) => {
     if (!(config.email)) {return next(new Error("Check In not enabled in config.js"))}
-    if ("::1" != req.ip && req.body.key != process.env.API_KEY) { return next(new Error("Not Authorized")) }
-    //UPDATE
+    if ("::1" != req.ip && req.body.key != process.env.API_KEY) { return next(new Error("Not Authorized")) }    
     People.find({}, (err, result) => {
-        console.log(result)
         var done = false;
         var i;
         for (i = 0; i < result.length; i++) {
@@ -82,12 +78,10 @@ app.post("/sendmail", (req, res, next) => {
             qrcode.toDataURL(result[i]._id.toString(), (err, url) => {
                 var subject = req.body.subject;
                 var html = req.body.html;
-                console.log(html)
                 for (g in config) {
                     subject = subject.replace("()"+g+"()",result[i][g])
                     html = html.replace("()"+g+"()",result[i][g])
                 }
-                console.log(html)
                 transporter.sendMail({
                     from: '"Neel" <neel.redkar@gmail.com>',
                     to: result[i].email,
@@ -104,7 +98,7 @@ app.post("/sendmail", (req, res, next) => {
 app.post("/clear", (req, res) => {
     if ("::1" != req.ip && req.body.key != process.env.API_KEY) { return next(new Error("Not Authorized")) }
     People.remove({}, (err) => {
-        console.log("removed")
+        console.log("Cleared MongoDB Collection!")
         res.json({ "removed": true })
     });
 });
