@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html>
-
-<head>
-    <title>RegHacks</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
-    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js">
-    </script>
-    <link rel="icon" href="/logo.png">
-</head>
-
-<body>
-    <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+<html lang="en" >
+  <head>
+    <meta charset="UTF-8">
+    <title>Cheatsheet Concept</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel='stylesheet' href='/style.css'>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">    
+    <link href="https://myCDN.com/prism@v1.x/themes/prism.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@15/dist/smooth-scroll.polyfills.min.js"></script>
+  </head>
+  <body>
+   <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item">
                 <img src="/logo.png" height="28">
@@ -56,11 +56,11 @@
             </div>
         </div>
     </nav>
-    <section class="hero is-dark ">
+    <section id="particles-js" class="hero is-primary is-medium">
         <div class="hero-body has-text-centered">
             <div class="container">
                 <img style="height: 96px;" src="/logo.png">
-                <h1 class="title">RegHack</h1>
+                <h1 class="title"><strong>RegHack</strong></h1>
                 <h2 class="subtitle">Automated registration for your events!</h2>
                 <p>Have you ever been confused on how to check in? Are you using a combination of google forms and a
                     spreadsheet and
@@ -69,85 +69,67 @@
             </div>
         </div>
     </section>
-    <div class="hero is-link">
-        <div class="hero-body has-text-centered">
-            <p class="title">Documentation</p>
-            <div class="columns is-centered">
-                <div class="column is-narrow">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <td>Endpoint</td>
-                                <td>Request Type</td>
-                                <td>JSON input</td>
-                                <td>What it does</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>/form</td>
-                                <td>GET</td>
-                                <td>N/A</td>
-                                <td> Has a basic form on what to put. You can add more/less, but then you need to
-                                    configure the backend.</td>
-                            </tr>
-                            <tr>
-                                <td>/people/:apikey</td>
-                                <td>GET</td>
-                                <td>N/A</td>
-                                <td>A list of the people that are signed up, and whether or not they are checked in.
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>/stats/:apikey</td>
-                                <td>GET</td>
-                                <td>N/A</td>
-                                <td>A list of the statistics about the people in your database.</td>
-                            </tr>
-                            <tr>
-                                <td>/email</td>
-                                <td>GET</td>
-                                <td>N/A</td>
-                                <td>A GUI to send a mail through the /sendmail post</td>
-                            </tr>
-                            <tr>
-                                <td>/reader</td>
-                                <td>GET</td>
-                                <td>N/A</td>
-                                <td>An online QR code reader that if your scan the qr code you sent them, will change
-                                    their checked status to in or out.</td>
-                            </tr>
-                            <tr>
-                                <td>/addperson</td>
-                                <td>POST</td>
-                                <td>
-                                    <pre id="addperson"></pre>
-                                </td>
-                                <td>This is to add a person to the database</td>
-                            </tr>
-                            <tr>
-                                <td>/toggleID</td>
-                                <td>POST</td>
-                                <td>
-                                    <pre id="toggleID"></pre>
-                                </td>
-                                <td>This is to change the checked value of a ID</td>
-                            </tr>
-                            <tr>
-                                <td>/sendmail</td>
-                                <td>POST</td>
-                                <td>
-                                    <pre id="sendmail"></pre>
-                                </td>
-                                <td>This is to send a mail to the group. `()b64code()` will be replaced with the base 64
-                                    url of their qr code and `()name()` will be replaced with their name.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+    <section class="section">
+      <div class="container">
+        <div class="columns">
+          <div class="column is-3">
+            <aside class="is-medium menu">
+          <p class="menu-label">
+            categories
+          </p>
+          <ul class="menu-list">
+            <li><a data-scroll href="#getting-started" class="is-active">Getting Started</a></li>
+            <li><a class="is-active">POST Requests</a></li>
+            <li><a class="is-active">GET Requests/ GUI</a></li>
+          </ul>
+            </aside>
+          </div>
+          <div class="column is-9">
+            <div class="content is-medium">
+          <h3 id="getting-started" class="title is-3">Getting Started</h3>
+              <div class="box">
+                <h4 id="const" class="title is-3">Installing Nodejs</h4>
+                <h4 class="title is-5">Mac</h4>
+                <pre><code class="language-shell">brew update 
+brew install node</code></pre>
+<h4 class="title is-5">Windows</h4>
+<pre><code class="language-powershell">cinst nodejs.install</code></pre>
+<h4 class="title is-5">Linux</h4>
+                <pre><code class="language-shell">sudo apt-get install nodejs 
+sudo apt-get install npm</code></pre>
+</div>
+        <div class="box">
+                <h4 id="const" class="title is-3">Downloading and Configuration</h4>
+                <h4 class="title is-5">Clone using Github</h4>
+                <pre><code class="language-bash">git clone https://github.com/Hacker719/RegHack</code></pre>
+                <h4 class="title is-5">Coniguring the config.js</h4>
+                <p>This is important because the entire program will make and store data based on this. So to do this you need to go to the config.js file. Then you will face the defualt options. You need to include all parts of data you want to record (ex. School, Age, Height etc.) You need to input those, and an example input (to determine between string and integer). There are some special configurations:</p>
+                <ol>
+                    <li>First is <code>checked</code>. This will allow you to, see if they are checked in or out and use the QR reader function. To activate set it to false.</li>
+                    <li>Second is <code>email</code>. This will allow you to, mass email the people an html email. To activate set it to a string</li>
+                </ol>
+                <p>An example config.js is:</p>
+                <pre><code class="language-javascript">module.exports = {
+    "Name":"John Doe",
+    "School":"Berkely College",
+    "Grade":12,
+    "age":42,
+    "email":"joe@gmail.com",
+    "checked":false
+}</code></pre>
+        </div> 
+        <div class="box">
+            <h1 class="title is-3">Starting</h1>
+            <p>To start up the app locally, go to the folder, and type:</p>
+            <pre><code>npm install
+node index.js</code></pre>
+            <p>Then the app should be running on <a href="localhost:3000">localhost:3000</a></p>
         </div>
+      </div>
     </div>
+  </div>
+</div>
+</section>
     <div class="footer">
         <div class="container has-text-centered">
             <p class="title is-6">View the repository <a
@@ -156,38 +138,347 @@
         </div>
     </div>
     <style>
-        td {
-            white-space: pre
-        }
-    </style>
-    <script>
-        var addperson = {
-            "name": "John Doe",
-            "age": 42,
-            "email": "crackerjack@yopmail.com",
-            "key": "your chosen API key"
-        }
-        var toggleID = {
-            "id": "Mongo ID Integer",
-            "where": "in/out can be configured for more",
-            "key": "your chosen API key"
-        }
-        var sendmail = {
-            "subject": "Subject of the email",
-            "html": "<h1>your html code for the email</h1>",
-            "key": "your chosen API key"
-        }
-        document.getElementById("addperson").innerHTML = JSON.stringify(addperson, undefined, 2);
-        document.getElementById("toggleID").innerHTML = JSON.stringify(toggleID, undefined, 2);
-        document.getElementById("sendmail").innerHTML = JSON.stringify(sendmail, undefined, 2);
-        (function () {
+    code[class*='language-'],
+pre[class*='language-'] {
+  color: rgb(215, 236, 255);
+  background: none;
+  font-family: 'Operator Mono', 'Roboto Mono', Menlo, Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono',
+    monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 2;
+  font-size: 1rem;
+  -webkit-overflow-scrolling: touch;
+  margin: 0;
+
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+pre[class*='language-']::-moz-selection,
+pre[class*='language-'] ::-moz-selection,
+code[class*='language-']::-moz-selection,
+code[class*='language-'] ::-moz-selection {
+  text-shadow: none;
+  background: #131824;
+}
+
+pre[class*='language-']::selection,
+pre[class*='language-'] ::selection,
+code[class*='language-']::selection,
+code[class*='language-'] ::selection {
+  text-shadow: none;
+  background: #131824;
+}
+
+@media print {
+  code[class*='language-'],
+  pre[class*='language-'] {
+    text-shadow: none;
+  }
+}
+
+/* Code blocks */
+pre[class*='language-'] {
+  overflow: auto;
+  padding: 0.75rem 1.25rem;
+}
+
+pre.is-option {
+  margin: 0;
+  padding: 0;
+}
+
+:not(pre) > code[class*='language-'],
+pre[class*='language-'] {
+  background: linear-gradient(-30deg, #273149, #1c273f);
+  border-radius: 0.25rem;
+}
+
+/* Inline code */
+:not(pre) > code[class*='language-'] {
+  padding: 0.1em;
+  border-radius: 0.3em;
+  white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #8ca2d3;
+}
+
+.token.selector,
+.token.attr-name {
+  color: #c7f683;
+}
+
+.token.punctuation {
+  color: #5ac8e3;
+}
+
+.namespace {
+  opacity: 0.7;
+}
+
+.token.tag {
+  color: #2cefd8;
+}
+
+.token.property,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: #85b4ff;
+}
+
+.token.string,
+.language-css .token.string,
+.token.url,
+.token.attr-value,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: #ffd694;
+}
+
+.token.operator,
+.token.entity,
+.style .token.string {
+  color: #ff9bbe;
+}
+
+.token.important,
+.token.atrule,
+.token.keyword {
+  color: #b7adff;
+}
+
+.token.function {
+  color: #25d0e5;
+}
+
+.token.regex,
+.token.variable {
+  color: #00a8d4;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+.token.italic {
+  font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
+}
+#particles-js canvas {
+    display: block;
+    position: fixed;
+    vertical-align: bottom;
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+    -webkit-transition: opacity .8s ease, -webkit-transform 1.4s ease;
+    transition: opacity .8s ease, transform 1.4s ease
+}
+
+#particles-js {
+    width: 100%;
+    height: 100%;
+    z-index: -10;
+    top: 0;
+    left: 0
+}pre,
+.message {
+  max-width: 960px;
+}
+
+li {margin: 10px}
+
+.box {
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+}
+
+.box span.icon {
+  float: right;
+  font-size: 1.7em;
+  padding: 2rem 2rem 0 0;
+}
+
+.is-large.fab {
+  font-size: 7em;
+}
+
+.is-large.fas {
+  font-size: 5em;
+  margin-left: 0.2em;
+}
+
+.media-content {overflow: hidden;}
+
+.token.number {
+  display: inline;
+  padding: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  text-align: inherit;
+  vertical-align: inherit;
+  border-radius: inherit;
+  font-weight: inherit;
+  white-space: inherit;
+  background: inherit;
+  margin: inherit;
+}
+
+</style>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/prism.js'></script>
+<script>
+  window.addEventListener('resize', () => {
+  const divs = document.querySelectorAll(".menu-list");
+  if (window.innerWidth < 768){
+    divs.forEach(div => div.classList.add("tags"));
+  }
+  else {
+    divs.forEach(div => div.classList.remove("tags"));
+  }
+});
+(function () {
             var burger = document.querySelector('#nav-toggle');
             var menu = document.querySelector('.navbar-menu');
             burger.addEventListener('click', function () {
                 burger.classList.toggle('is-active');
                 menu.classList.toggle('is-active');
             });
-        })();</script>
+        })();
+        particlesJS("particles-js",{
+  "particles": {
+    "number": {
+      "value": 66,
+      "density": {
+        "enable": true,
+        "value_area": 394.58004845442963
+      }
+    },
+    "color": {
+      "value": "#ffffff"
+    },
+    "shape": {
+      "type": "circle",
+      "stroke": {
+        "width": 0,
+        "color": "#000000"
+      },
+      "polygon": {
+        "nb_sides": 5
+      },
+      "image": {
+        "src": "img/github.svg",
+        "width": 100,
+        "height": 100
+      }
+    },
+    "opacity": {
+      "value": 0.5,
+      "random": false,
+      "anim": {
+        "enable": false,
+        "speed": 1,
+        "opacity_min": 0.1,
+        "sync": false
+      }
+    },
+    "size": {
+      "value": 3,
+      "random": true,
+      "anim": {
+        "enable": false,
+        "speed": 40,
+        "size_min": 0.1,
+        "sync": false
+      }
+    },
+    "line_linked": {
+      "enable": true,
+      "distance": 150,
+      "color": "#ffffff",
+      "opacity": 0.4,
+      "width": 1
+    },
+    "move": {
+      "enable": true,
+      "speed": 7.891600969088593,
+      "direction": "none",
+      "random": true,
+      "straight": false,
+      "out_mode": "out",
+      "bounce": false,
+      "attract": {
+        "enable": false,
+        "rotateX": 600,
+        "rotateY": 1200
+      }
+    }
+  },
+  "interactivity": {
+    "detect_on": "canvas",
+    "events": {
+      "onhover": {
+        "enable": true,
+        "mode": "repulse"
+      },
+      "onclick": {
+        "enable": true,
+        "mode": "push"
+      },
+      "resize": true
+    },
+    "modes": {
+      "grab": {
+        "distance": 400,
+        "line_linked": {
+          "opacity": 1
+        }
+      },
+      "bubble": {
+        "distance": 400,
+        "size": 40,
+        "duration": 2,
+        "opacity": 8,
+        "speed": 3
+      },
+      "repulse": {
+        "distance": 200,
+        "duration": 0.4
+      },
+      "push": {
+        "particles_nb": 4
+      },
+      "remove": {
+        "particles_nb": 2
+      }
+    }
+  },
+  "retina_detect": true
+});
+var scroll = new SmoothScroll('a[href*="#"]',{
+	speed: 500,
+	speedAsDuration: true
+});
+</script>  
 </body>
-
 </html>

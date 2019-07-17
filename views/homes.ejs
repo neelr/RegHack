@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>RegHacks</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/style.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js">
+    </script>
+    <link rel="icon" href="/favicon.png">
+</head>
+
+<body>
+    <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item">
+                <img src="/logo.png" height="28">
+            </a>
+
+            <a id="nav-toggle" role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+                data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+                <a href="/" class="navbar-item is-active">
+                    Home
+                </a>
+                <a href="/reader" class="navbar-item">
+                    QR Reader
+                </a>
+                <a href="/email" class="navbar-item">
+                    Mass Mailer
+                </a>
+                <a href="/people/1" class="navbar-item">
+                    All People
+                </a>
+                <a href="/form" class="navbar-item">
+                    Form
+                </a>
+            </div>
+
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a href="https://github.com/hacker719/reghack" class="button is-inverted is-outlined is-dark">
+                            <strong>Visit Github</strong>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <section class="hero is-dark ">
+        <div class="hero-body has-text-centered">
+            <div class="container">
+                <img style="height: 96px;" src="/logo.png">
+                <h1 class="title">RegHack</h1>
+                <h2 class="subtitle">Automated registration for your events!</h2>
+                <p>Have you ever been confused on how to check in? Are you using a combination of google forms and a
+                    spreadsheet and
+                    doing it manually? There IS a better way! This node web app is built to help you register
+                    AUTOMATICALLY!</p>
+            </div>
+        </div>
+    </section>
+    <div class="hero is-primary">
+        <div class="hero-body has-text-centered">
+            <p class="title">Documentation</p>
+            <div class="columns is-centered">
+                <div class="column is-narrow">
+                    <table class="table is-bordered is-striped">
+                        <thead>
+                            <tr>
+                                <td><strong>Endpoint</strong></td>
+                                <td><strong>Request Type</strong></td>
+                                <td><strong>JSON input</strong></td>
+                                <td><strong>What it does</strong></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>/form</td>
+                                <td>GET</td>
+                                <td>N/A</td>
+                                <td> Has a basic form on what to put. You can add more/less, but then you need to
+                                    configure the backend.</td>
+                            </tr>
+                            <tr>
+                                <td>/people/:apikey</td>
+                                <td>GET</td>
+                                <td>N/A</td>
+                                <td>A list of the people that are signed up, and whether or not they are checked in.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>/email</td>
+                                <td>GET</td>
+                                <td>N/A</td>
+                                <td>A GUI to send a mail through the /sendmail post</td>
+                            </tr>
+                            <tr>
+                                <td>/reader</td>
+                                <td>GET</td>
+                                <td>N/A</td>
+                                <td>An online QR code reader that if your scan the qr code you sent them, will change
+                                    their checked status to in or out.</td>
+                            </tr>
+                            <tr>
+                                <td>/addperson</td>
+                                <td>POST</td>
+                                <td>
+                                    <pre id="addperson"></pre>
+                                </td>
+                                <td>This is to add a person to the database</td>
+                            </tr>
+                            <tr>
+                                <td>/toggleID</td>
+                                <td>POST</td>
+                                <td>
+                                    <pre id="toggleID"></pre>
+                                </td>
+                                <td>This is to change the checked value of a ID</td>
+                            </tr>
+                            <tr>
+                                <td>/sendmail</td>
+                                <td>POST</td>
+                                <td>
+                                    <pre id="sendmail"></pre>
+                                </td>
+                                <td><p>This is to send a mail to the group. `()b64code()` will be replaced with the base 64
+                                    url of their qr code and `()name()` will be replaced with their name. 
+                                    <strong>Can only be used if set "email" in config file</strong></p></td>
+                            </tr>
+                            <tr>
+                                <td>/clear</td>
+                                <td>POST</td>
+                                <td>
+                                    <pre id="clear"></pre>
+                                </td>
+                                <td><p>This will clear the entire MongoDB collection</p></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="container has-text-centered">
+            <p class="title is-6">View the repository <a
+                    href="https://github.com/Hacker719/RegHack">@Hacker719/RegHack</a></p>
+            <p class="title is-6">Open Source! GNU GPL V3 License</p>
+        </div>
+    </div>
+    <style>
+        td {
+            white-space: pre
+        }
+    </style>
+    <script>
+        var addperson = {
+            "Name": "(all things entered in config.js)",
+            "Age": 42,
+            "email": "crackerjack@yopmail.com",
+            "key": "your chosen API key"
+        }
+        var toggleID = {
+            "id": "Mongo ID Integer",
+            "where": "in/out can be configured for more",
+            "key": "your chosen API key"
+        }
+        var sendmail = {
+            "subject": "Subject of the email",
+            "html": "<h1>your html code for the email</h1>",
+            "key": "your chosen API key"
+        }
+        var clear = {
+            "key": "your chosen API key"
+        }
+        document.getElementById("addperson").innerHTML = JSON.stringify(addperson, undefined, 2);
+        document.getElementById("toggleID").innerHTML = JSON.stringify(toggleID, undefined, 2);
+        document.getElementById("sendmail").innerHTML = JSON.stringify(sendmail, undefined, 2);
+        document.getElementById("clear").innerHTML = JSON.stringify(clear, undefined, 2);
+        (function () {
+            var burger = document.querySelector('#nav-toggle');
+            var menu = document.querySelector('.navbar-menu');
+            burger.addEventListener('click', function () {
+                burger.classList.toggle('is-active');
+                menu.classList.toggle('is-active');
+            });
+        })();</script>
+</body>
+
+</html>

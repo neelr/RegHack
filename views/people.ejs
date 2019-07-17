@@ -6,9 +6,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+    <link rel="stylesheet" href="/style.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-    <link rel="icon" href="/logo.png">
+    <link rel="icon" href="/favicon.png">
 </head>
 
 <body style="background-color: #363636;">
@@ -61,19 +61,19 @@
             <h1 class="title">Table of people</h1>
             <div class="columns is-centered">
                 <div class="column is-narrow">
-                    <table class="table">
+                    <table class="table is-bordered">
                         <thead>
                             <tr>
                                 <% 
                                 for (i in config) {
                                 if (i != "checked" && i != "_id" && i!="email") { %>
-                                    <td><%=i%></td>
+                                    <td><strong><%=i%></strong></td>
                                 <%}}
                                 if (config.email) {%>
-                                    <td>Email</td>
+                                    <td><strong>Email</strong></td>
                                 <% }
                                 if (config.checked) {%>
-                                    <td>Checked</td>
+                                    <td><strong>Check-In</strong></td>
                                 <% } %>
                             </tr>
                         </thead>
@@ -83,7 +83,6 @@
                                 %>
                             <tr>
                                 <% for (i in data[item]) {
-                                console.log(i)
                                 if (i != "checked" && config[i] && i != "toString" && i!="email") {%>
                                 <td><%=data[item][i]%></td>
                                 <%}
