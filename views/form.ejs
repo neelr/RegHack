@@ -24,7 +24,6 @@
                 <span aria-hidden="true"></span>
             </a>
         </div>
-
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
                 <a href="/" class="navbar-item">
@@ -40,9 +39,6 @@
                 </a>
                 <a class="navbar-item is-active">
                     Form
-                </a>
-                <a href="/stats/1" class="navbar-item">
-                    Statistics
                 </a>
             </div>
 
@@ -62,26 +58,34 @@
             <h1 class="title">Register for the Event!</h1>
             <div class="container" style="width: 50vw">
                 <form method="POST" action="/addperson">
-                    <div class="field">
-                        <label class="label has-text-white">Name</label>
-                        <div class="control">
-                            <input class="input" type="text" name="name" placeholder="Enter your name" required>
+                    <% 
+                    var i;
+                    for (i in data) { %>
+                        <%
+                        var type = "text";
+                        if (data[i] == "number") {
+                            type="number";
+                        } else if (i.toLowerCase() =="email") {
+                            type="email";
+                        }
+                        if (i != "checked" && i!="email") {
+                        %>
+                        <div class="field">
+                            <label class="label has-text-white"><%=i%></label>
+                            <div class="control">
+                                <input class="input" type="<%=type%>" name="<%=i%>" placeholder="Enter your <%= i.toLowerCase() %>" required>
+                            </div>
                         </div>
-                    </div>
+                    <%} else if (i=="email") {%>
                     <div class="field">
-                        <label class="label has-text-white">Age</label>
-                        <div class="control">
-                            <input class="input" type="number" name="age" placeholder="Enter your age" required>
+                            <label class="label has-text-white">Email</label>
+                            <div class="control">
+                                <input class="input" type="<%=type%>" name="<%=i%>" placeholder="Enter your <%= i.toLowerCase() %>" required>
+                            </div>
                         </div>
-                    </div>
+                    <%}}%>
                     <div class="field">
-                        <label class="label has-text-white">Email</label>
-                        <div class="control">
-                            <input class="input" type="email" name="email" placeholder="Enter your email" required>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="control  has-text-centered">
+                        <div class="control has-text-centered">
                             <input class="button is-success" type="submit" value="Submit">
                         </div>
                     </div>

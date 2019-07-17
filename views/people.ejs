@@ -43,9 +43,6 @@
                 <a href="/form" class="navbar-item">
                     Form
                 </a>
-                <a href="/stats/1" class="navbar-item">
-                    Statistics
-                </a>
             </div>
 
             <div class="navbar-end">
@@ -67,24 +64,47 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <td>Name</td>
-                                <td>Age</td>
-                                <td>Email</td>
-                                <td>Checked</td>
+                                <% 
+                                for (i in config) {
+                                if (i != "checked" && i != "_id" && i!="email") { %>
+                                    <td><%=i%></td>
+                                <%}}
+                                if (config.email) {%>
+                                    <td>Email</td>
+                                <% }
+                                if (config.checked) {%>
+                                    <td>Checked</td>
+                                <% } %>
                             </tr>
                         </thead>
                         <tbody>
-                            <% var i;
-                    for (i=0; i < data.length; i++) { %>
+                            <% 
+                            for (item in data) {
+                                %>
                             <tr>
-                                <td><%= data[i].name %></td>
-                                <td><%= data[i].age %></td>
-                                <td><%= data[i].email %></td>
-                                <td><%= data[i].checked ? "In" : "Out" %></td>
+                                <% for (i in data[item]) {
+                                console.log(i)
+                                if (i != "checked" && config[i] && i != "toString" && i!="email") {%>
+                                <td><%=data[item][i]%></td>
+                                <%}
+                                if (data[item].email != undefined && config[i] && i != "toString" ) {
+                                    if (i == "email") {%>
+                                    <td><%=data[item].email%></td>
+                                <%}}
+                                if (data[item].checked != undefined && config[i] && i != "toString" ) {
+                                    if (i == "checked") {
+                                        if (data[item].checked) {%>
+                                    <td>In</td>
+                                    <%
+                                    }else if (!data[item].checked) {%>
+                                    <td>Out</td>
+                                <%}}}}%>
                             </tr>
                             <%}%>
                     </tbody>
                 </table>
+                </div>
+                </div>
                 <div class="field">
                     <label class="label has-text-white">Your API Key</label>
                     <div class="control has-text-centered">
